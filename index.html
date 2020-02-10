@@ -18,6 +18,7 @@
       const TOTAL_COUNT = 'amos_count';
       const gifElement = document.querySelector('#gif');
       const giveMeAmos = document.querySelector('#giveMeAmos');
+      const giphyLogo = document.querySelector('.giphyLogo');
 
       function getRandomInt(min, max) {
         min = Math.ceil(min);
@@ -70,7 +71,7 @@
       }
 
       giveMeAmos.addEventListener('click', main);
-
+      giphyLogo.addEventListener('click', () => setAmosOffset(0));
       main();
     </script>
   </body>
