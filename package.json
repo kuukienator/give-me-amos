@@ -1,0 +1,23 @@
+{
+  "name": "give-me-amos",
+  "version": "1.0.0",
+  "description": "This directory is a brief example of a vanilla site that can be deployed with ZEIT Now and zero configuration.",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuukienator/give-me-amos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kuukienator/give-me-amos/issues"
+  },
+  "homepage": "https://github.com/kuukienator/give-me-amos#readme"
+}

@@ -1,0 +1,5 @@
+{
+    "env": {
+      "GIPHY_TOKEN": "@giphy_token"
+    }
+  }

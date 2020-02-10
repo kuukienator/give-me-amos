@@ -18,11 +18,28 @@ body {
   text-rendering: optimizeLegibility;
   hyphens: auto;
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  background: #0f323c;
+  color: #fdf9f8;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Audiowide', cursive;
 }
 
 h1 {
   text-align: center;
-  font-size: 45px;
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+img {
+  width: 100%;
+  border-radius: 0.5em;
 }
 
 a {
@@ -53,4 +70,32 @@ code:after {
 p {
   text-align: center;
   font-size: 16px;
+}
+
+
+button {
+  border: 2px solid white;
+  text-transform: uppercase;
+  padding: 0.75em;
+  font-family: inherit;
+  border-radius: 10px;
+  background: #f87107;
+  color: white;
+  margin: 1em 0;
+  max-width: 300px;
+  width: 100%;
+  font-size: 1em;
+}
+
+.imageContainer {
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.giphyLogo {
+  width: 100px;
+  position: absolute;
+  bottom: 1em;
 }

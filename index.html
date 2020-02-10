@@ -1,45 +1,76 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Vanilla + Go API</title>
+    <title>Give me Amos!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Roboto+Mono&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Welcome to a Static Site with Data from a Go API</h1>
-    <h2>
-      Deployed with
-      <a href="https://zeit.co/docs" target="_blank" rel="noreferrer noopener"
-        >ZEIT Now</a
-      >!
-    </h2>
-    <p>
-      <a
-        href="https://github.com/zeit/now-examples/blob/master/vanilla-functions"
-        target="_blank"
-        rel="noreferrer noopener"
-        >This project</a
-      >
-      includes three files. A static <code>index.html</code> file as the
-      homepage, a static <code>style.css</code> file for styling, and a
-      <code>api/date.go</code> serverless function that returns the date on
-      invocation. See
-      <a href="/api/date.go"
-        ><code>api/date.go</code> for the Date API with Go</a
-      >.
-    </p>
-    <br />
-    <h3>The date according to Go is:</h3>
-    <p class="date">Loading date...</p>
+    <h1>Give me Amos</h1>
+    <div class="imageContainer">
+      <img style="display: none;" id="gif">
+    </div>
+    <button id="giveMeAmos">Get some Amos</button>
+    <img class="giphyLogo" src="/images/Poweredby_100px-Black_VertLogo.png" alt="powered by giphy">
     <script>
+      const OFFSET_NAME = 'amos_offset';
+      const TOTAL_COUNT = 'amos_count';
+      const gifElement = document.querySelector('#gif');
+      const giveMeAmos = document.querySelector('#giveMeAmos');
+
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+
+      function getAmosOffset() {
+        return Number(localStorage.getItem(OFFSET_NAME)) || 0;
+      }
+
+      function setAmosOffset(offset) {
+        return localStorage.setItem(OFFSET_NAME, offset);
+      }
+
+      function getAmosCount() {
+        return Number(localStorage.getItem(TOTAL_COUNT)) || 0;
+      }
+
+      function setAmosCount(count) {
+        return localStorage.setItem(TOTAL_COUNT, count);
+      }
+
+      function getRandomAmos(total) {
+        return getRandomInt(0, total);
+      }
+
       function main() {
-        return fetch('/api/date.go')
+        gifElement.style.display = 'none';
+        // const offest = getRandomAmos(getAmosCount());
+        const offest = getAmosOffset();
+        const requestEndpoint = `/api/get-amos.js?r=0&o=${offest}`;
+
+        return fetch(requestEndpoint)
           .then(function(response) {
-            return response.text();
+            return response.json();
           })
-          .then(function(date) {
-            document.querySelector('.date').textContent = date;
+          .then(function(data) {
+            console.log(data);
+            setAmosOffset(getAmosOffset() + 1);
+            //setAmosCount(data.pagination.total_count);
+            const gifs = data.data;
+            const gif = gifs[0];
+            console.log('gifs', gif);
+            gifElement.src = gif.images.downsized.url;
+            //gifElement.src = gif.images.original.url;
+            gifElement.alt = gif.title;
+            gifElement.style.display = 'block';
           });
       }
+
+      giveMeAmos.addEventListener('click', main);
+
       main();
     </script>
   </body>
