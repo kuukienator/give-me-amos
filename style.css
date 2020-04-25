@@ -99,3 +99,48 @@ button {
   position: absolute;
   bottom: 1em;
 }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  animation: rotate infinite 1s ease-in-out;
+}
+
+.loading > div {
+  background-color: #f87107;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid;
+}
+
+#loading-indicator-1 {
+  top: 0;
+  left: 0;
+}
+
+#loading-indicator-2 {
+  bottom: 0;
+  right: 0;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}

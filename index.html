@@ -9,7 +9,11 @@
   <body>
     <h1>Give me Amos</h1>
     <div class="imageContainer">
-      <img style="display: none;" id="gif">
+      <div class="loading hidden">
+        <div id="loading-indicator-1"></div>
+        <div id="loading-indicator-2"></div>
+      </div>
+      <img id="gif">
     </div>
     <button id="giveMeAmos">Get some Amos</button>
     <img class="giphyLogo" src="/images/PoweredBy_200px-Black_HorizLogo.png" alt="powered by giphy">
@@ -19,6 +23,7 @@
       const gifElement = document.querySelector('#gif');
       const giveMeAmos = document.querySelector('#giveMeAmos');
       const giphyLogo = document.querySelector('.giphyLogo');
+      const loadingIndicator = document.querySelector('.loading');
 
       function getRandomInt(min, max) {
         min = Math.ceil(min);
@@ -47,7 +52,8 @@
       }
 
       function main() {
-        gifElement.style.display = 'none';
+        loadingIndicator.classList.toggle('hidden', false);
+        gifElement.classList.toggle('hidden', true);
         // const offest = getRandomAmos(getAmosCount());
         const offest = getAmosOffset();
         const requestEndpoint = `/api/get-amos.js?r=0&o=${offest}`;
@@ -66,7 +72,8 @@
             gifElement.src = gif.images.downsized.url;
             //gifElement.src = gif.images.original.url;
             gifElement.alt = gif.title;
-            gifElement.style.display = 'block';
+            gifElement.classList.toggle('hidden', false);
+            loadingIndicator.classList.toggle('hidden', true);
           });
       }
 
