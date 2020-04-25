@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Give me Amos!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Get GIFs of Amos Burton from The Expanse">
     <link href="https://fonts.googleapis.com/css?family=Audiowide|Roboto+Mono&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -14,7 +15,7 @@
         <div id="loading-indicator-2"></div>
       </div>
       <!-- <img id="gif"> -->
-      <a id="giphy-link" target="_blank">
+      <a id="giphy-link" target="_blank" rel="noopener">
         <video autoplay loop muted playsinline id="mp4"></video>
       </a>
     </div>
@@ -76,6 +77,7 @@
             mp4Element.src = gif.images.original_mp4.mp4;
             giphyLink.href = gif.url;
             giphyLink.alt = gif.title;
+            giphyLink.setAttribute('aria-label', gif.title);
             mp4Element.classList.toggle('hidden', false);
             loadingIndicator.classList.toggle('hidden', true);
           });
