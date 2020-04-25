@@ -13,7 +13,10 @@
         <div id="loading-indicator-1"></div>
         <div id="loading-indicator-2"></div>
       </div>
-      <img id="gif">
+      <!-- <img id="gif"> -->
+      <a id="giphy-link" target="_blank">
+        <video autoplay loop muted playsinline id="mp4"></video>
+      </a>
     </div>
     <button id="giveMeAmos">Get some Amos</button>
     <img class="giphyLogo" src="/images/PoweredBy_200px-Black_HorizLogo.png" alt="powered by giphy">
@@ -21,6 +24,8 @@
       const OFFSET_NAME = 'amos_offset';
       const TOTAL_COUNT = 'amos_count';
       const gifElement = document.querySelector('#gif');
+      const mp4Element = document.querySelector('#mp4');
+      const giphyLink = document.querySelector('#giphy-link');
       const giveMeAmos = document.querySelector('#giveMeAmos');
       const giphyLogo = document.querySelector('.giphyLogo');
       const loadingIndicator = document.querySelector('.loading');
@@ -53,7 +58,7 @@
 
       function main() {
         loadingIndicator.classList.toggle('hidden', false);
-        gifElement.classList.toggle('hidden', true);
+        mp4Element.classList.toggle('hidden', true);
         // const offest = getRandomAmos(getAmosCount());
         const offest = getAmosOffset();
         const requestEndpoint = `/api/get-amos.js?r=0&o=${offest}`;
@@ -65,14 +70,13 @@
           .then(function(data) {
             console.log(data);
             setAmosOffset(getAmosOffset() + 1);
-            //setAmosCount(data.pagination.total_count);
             const gifs = data.data;
             const gif = gifs[0];
             console.log('gifs', gif);
-            gifElement.src = gif.images.downsized.url;
-            //gifElement.src = gif.images.original.url;
-            gifElement.alt = gif.title;
-            gifElement.classList.toggle('hidden', false);
+            mp4Element.src = gif.images.original_mp4.mp4;
+            giphyLink.href = gif.url;
+            giphyLink.alt = gif.title;
+            mp4Element.classList.toggle('hidden', false);
             loadingIndicator.classList.toggle('hidden', true);
           });
       }

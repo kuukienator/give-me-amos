@@ -37,7 +37,7 @@ h2 {
   font-size: 1.2em;
 }
 
-img {
+img, video {
   width: 100%;
   border-radius: 0.5em;
 }
@@ -52,6 +52,11 @@ a {
 
 a:hover {
   border-bottom: 1px solid #0076ff;
+}
+
+#giphy-link {
+  border: none;
+  color: initial;
 }
 
 code,
