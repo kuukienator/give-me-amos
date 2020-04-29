@@ -11,8 +11,7 @@
     <h1>Give me Amos</h1>
     <div class="imageContainer">
       <div class="loading hidden">
-        <div id="loading-indicator-1"></div>
-        <div id="loading-indicator-2"></div>
+        <img src="https://media.giphy.com/media/eKTz84dLKGQlv3f2KO/giphy.gif" alt="Amos winking sticker">
       </div>
       <!-- <img id="gif"> -->
       <a id="giphy-link" target="_blank" rel="noopener">
@@ -72,11 +71,9 @@
             return response.json();
           })
           .then(function(data) {
-            console.log(data);
             setAmosOffset(getAmosOffset() + 1);
             const gifs = data.data;
             const gif = gifs[0];
-            console.log('gifs', gif);
             mp4Element.src = gif.images.original_mp4.mp4;
             giphyLink.href = gif.url;
             giphyLink.alt = gif.title;
