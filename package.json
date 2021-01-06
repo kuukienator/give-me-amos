@@ -4,7 +4,7 @@
   "description": "This directory is a brief example of a vanilla site that can be deployed with ZEIT Now and zero configuration.",
   "main": "index.js",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.21.1"
   },
   "devDependencies": {},
   "scripts": {
